@@ -10,20 +10,13 @@
       "name": "Login",
       "request": {
         "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTg2OTU1MiwiZXhwIjoxNzc5OTU1OTUyfQ.X2NgxNoQ3o97kml390d4ZMAU0mn-dDc7Y7WELMpzzs0",
-              "type": "string"
-            }
-          ]
+          "type": "noauth"
         },
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"clave\": \"PROD001\",\r\n    \"nombre\": \"Servicio de Capacitación Básica\",\r\n    \"precio\": 1600.00,\r\n    \"activo\": true\r\n}",
+          "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin123\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -31,7 +24,7 @@
           }
         },
         "url": {
-          "raw": "http://localhost:8080/api/productos/crear",
+          "raw": "http://localhost:8080/api/auth/login",
           "protocol": "http",
           "host": [
             "localhost"
@@ -39,8 +32,8 @@
           "port": "8080",
           "path": [
             "api",
-            "productos",
-            "crear"
+            "auth",
+            "login"
           ]
         }
       },
@@ -59,7 +52,7 @@
             }
           ]
         },
-        "method": "POST",
+        "method": "PUT",
         "header": [],
         "body": {
           "mode": "raw",
@@ -184,6 +177,119 @@
             "api",
             "productos",
             "crear"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Filtrado por nombre",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTg2OTU1MiwiZXhwIjoxNzc5OTU1OTUyfQ.X2NgxNoQ3o97kml390d4ZMAU0mn-dDc7Y7WELMpzzs0",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/productos/listar?nombre=servicio&page=0&size=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "productos",
+            "listar"
+          ],
+          "query": [
+            {
+              "key": "nombre",
+              "value": "servicio",
+              "type": "text"
+            },
+            {
+              "key": "page",
+              "value": "0",
+              "type": "text"
+            },
+            {
+              "key": "size",
+              "value": "10",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Filtrado por rango de precios",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTg2OTU1MiwiZXhwIjoxNzc5OTU1OTUyfQ.X2NgxNoQ3o97kml390d4ZMAU0mn-dDc7Y7WELMpzzs0",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/productos/listar?precioMin=1000&precioMax=4000&page=0&size=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "productos",
+            "listar"
+          ],
+          "query": [
+            {
+              "key": "precioMin",
+              "value": "1000",
+              "type": "text"
+            },
+            {
+              "key": "precioMax",
+              "value": "4000",
+              "type": "text"
+            },
+            {
+              "key": "page",
+              "value": "0",
+              "type": "text"
+            },
+            {
+              "key": "size",
+              "value": "10",
+              "type": "text"
+            }
           ]
         }
       },
